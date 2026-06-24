@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+
+# Data (large files — use DVC or similar)
+data/raw/
+data/processed/
+*.tif
+*.geojson
+
+# Model artifacts
+checkpoints/
+mlruns/
+*.ckpt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment
+.env
+.env.*
+*.env
+
+# Tools
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
