@@ -3,29 +3,38 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.backends.legacy:build"
 
 [project]
-name = "sentinel-crop-segmentation"
+name = "sentinel-olive-suitability"
 version = "0.1.0"
-description = "Semantic segmentation of crop types from Sentinel-2 satellite imagery"
+description = "Olive grove suitability mapping for Greece using species distribution modelling"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "torch>=2.2",
-    "torchvision>=0.17",
-    "torchgeo>=0.5",
-    "segmentation-models-pytorch>=0.3",
-    "pytorch-lightning>=2.2",
+    # Geospatial
     "rasterio>=1.3",
     "geopandas>=0.14",
     "shapely>=2.0",
+    "pyproj>=3.6",
+    "scipy>=1.12",
+    # Data
     "numpy>=1.26",
     "pandas>=2.1",
+    "pyarrow>=14.0",
+    # Machine learning
+    "scikit-learn>=1.4",
+    "xgboost>=2.0",
+    "shap>=0.45",
+    # Remote data access
+    "cdsapi>=0.6",
+    "requests>=2.31",
+    "pystac-client>=0.7",
+    # Visualisation
     "matplotlib>=3.8",
-    "hydra-core>=1.3",
-    "mlflow>=2.11",
+    "folium>=0.16",
+    "contextily>=1.5",
+    # Utilities
     "tqdm>=4.66",
     "rich>=13.0",
-    "pystac-client>=0.7",
-    "planetary-computer>=1.0",
+    "pyyaml>=6.0",
 ]
 
 [project.optional-dependencies]
@@ -37,6 +46,7 @@ dev = [
     "pre-commit>=3.7",
     "ipykernel>=6.29",
     "jupyter>=1.0",
+    "python-dotenv>=1.0",
 ]
 
 [tool.ruff]

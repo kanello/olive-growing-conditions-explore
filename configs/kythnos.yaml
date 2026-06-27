@@ -1,0 +1,55 @@
+area:
+  name: Kythnos
+  bbox:
+    north: 37.50
+    south: 37.35
+    east: 24.48
+    west: 24.38
+  crs: EPSG:4326
+
+data:
+  raw_dir: data/raw
+  samples_path: data/samples/olive_presence_absence.geojson
+  features_path: data/features/feature_matrix.parquet
+  n_presence_samples: 5000
+  n_absence_samples: 5000
+  random_seed: 42
+
+sentinel2:
+  bands: [B02, B03, B04, B05, B06, B07, B08, B8A, B11, B12]
+  seasons:
+    summer: ["2022-06-01", "2022-08-31"]
+    winter: ["2022-12-01", "2023-02-28"]
+  cloud_cover_max: 20
+
+climate:
+  source: era5-land  # or chelsa
+  variables:
+    - 2m_temperature
+    - total_precipitation
+    - 2m_dewpoint_temperature
+
+terrain:
+  dem_source: copernicus-dem-30  # GLO-30
+  resolution_m: 30
+
+soil:
+  source: soilgrids
+  depth: 0-30cm
+  variables:
+    - phh2o   # soil pH
+    - clay
+    - sand
+    - soc     # organic carbon
+    - bdod    # bulk density
+
+model:
+  output_path: models/suitability_rf.pkl
+  n_estimators: 500
+  max_depth: null
+  spatial_cv_folds: 5
+  suitability_threshold: 0.5
+
+output:
+  suitability_tif: outputs/kythnos_suitability.tif
+  top_area_pct: 0.10

@@ -1,17 +1,22 @@
 # macOS
 .DS_Store
 
-# Data (large files — use DVC or similar)
+# Data (large files — use DVC or similar if versioning is needed)
 data/raw/
-data/processed/
+data/samples/
+data/features/
+86835.zip
+*.zip
 *.tif
 *.geojson
+*.parquet
+*.nc
+*.grib
 
 # Model artifacts
-checkpoints/
-mlruns/
-*.ckpt
-*.pth
+models/
+*.pkl
+*.joblib
 
 # Python
 __pycache__/
@@ -24,12 +29,14 @@ build/
 
 # Jupyter
 .ipynb_checkpoints/
-*.ipynb
 
 # Environment
 .env
 .env.*
 *.env
+
+# CDS API credentials (keep out of version control)
+.cdsapirc
 
 # Tools
 .ruff_cache/
